@@ -1,0 +1,3 @@
+torch==2.2.2
+pillow==10.4.0
+colpali_engine==0.3.4
