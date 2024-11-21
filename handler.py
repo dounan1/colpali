@@ -4,15 +4,16 @@ from io import BytesIO
 import base64
 
 from colpali_engine.models import ColQwen2, ColQwen2Processor
+model_name = "vidore/colqwen2-v1.0"
 
 class EndpointHandler:
     def __init__(self, path=""):
         self.model = ColQwen2.from_pretrained(
-            path,
+            model_name,
             torch_dtype=torch.bfloat16,
             device_map="auto"  # This will use CUDA if available, otherwise CPU
         ).eval()
-        self.processor = ColQwen2Processor.from_pretrained(path)
+        self.processor = ColQwen2Processor.from_pretrained(model_name)
 
     def __call__(self, data):
         # Extract inputs from the request data
